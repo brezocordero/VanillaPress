@@ -1,4 +1,4 @@
-
+'use-strict'
 /**
  * Main JSON object of posts, pages and settings
  */

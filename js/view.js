@@ -1,3 +1,5 @@
+'use-strict'
+
 /**
  * View file for displaying content
  */

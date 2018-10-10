@@ -1,3 +1,5 @@
+'use-strict'
+
 /**
  * Router file for managing url changes
  */
