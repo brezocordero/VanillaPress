@@ -1,3 +1,5 @@
+'use-strict'
+
 /**
  * Helper file for extra helper functions
  */
