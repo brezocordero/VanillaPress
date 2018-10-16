@@ -29,29 +29,15 @@ router.init = function() {
  *
  * @return {Boolean} 
  */
-router.isEditable = function () {
-  return router.editable;
-}
+router.isEditable = () => router.editable;
+
 /**
  * Gets the slug from the URL
  *
  * @return {string} slug Slug from URL
  */
-router.getSlug = function() {
+router.getSlug = () => ( "" === window.location.hash ) ?  null : window.location.hash.substr( 1 );
 
-  slug = window.location.hash;
-
-  if( "" === slug ) {
-
-    return null;
-
-  } else {
-
-    return slug.substr( 1 );
-
-  }
-
-};
 
 /**
  * Listener function for URL changes

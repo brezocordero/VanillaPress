@@ -33,11 +33,8 @@ view.loadBlogPosts = function() {
       postsMarkup = document.createDocumentFragment(),
       titleEl = helpers.getPageTitleEl(),
       contentEl = helpers.getPageContentEl();
-
-
-  for ( var i = 0, max = posts.length; i < max; i++ ) {
-    postsMarkup.appendChild( view.createPostMarkup( posts[i] ) );
-  }
+      
+  posts.forEach(post => postsMarkup.appendChild( view.createPostMarkup( post ) ));
 
   contentEl.appendChild( postsMarkup );
   titleEl.innerHTML = 'Blog Posts';
@@ -110,9 +107,8 @@ view.createMainMenu = function() {
       menuMarkup = document.createDocumentFragment(),
       mainMenuEl = helpers.getMainMenuEl();
 
-  for (var i = 0, max = pages.length; i < max; i++) {
-    menuMarkup.appendChild( helpers.createMenuItem( pages[i] ) );
-  }
+  // for each page on pages, create a menu item and append it to navigation
+  pages.forEach( page => menuMarkup.appendChild( helpers.createMenuItem( page )));
 
   mainMenuEl.appendChild( menuMarkup );
 
@@ -133,7 +129,7 @@ view.createPostMarkup = function( post ) {
       contentEl = document.createElement( 'div' );
 
   titleLink.appendChild( title );
-  titleLink.href = '#' + post.slug;
+  titleLink.href = `#${post.slug}`;
   titleEl.appendChild( titleLink );
   contentEl.appendChild( document.createTextNode( post.content ) );
 
@@ -147,17 +143,8 @@ view.createPostMarkup = function( post ) {
  * Closes or opens the editor, depending on its state
  * @param String editor State
 **/
-view.toggleEditor = function( editorState) {
 
-  if ( 'closed' === editorState ){
-      view.openEditor();
-  }
-  else {
-    
-    view.closeEditor();
-
-  }
-}
+view.toggleEditor = ( editorState ) => ( 'closed' === editorState ) ? view.openEditor() : view.closeEditor() ;
 /**
  * Opens the editor
 **/
