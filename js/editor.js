@@ -18,7 +18,6 @@ editor.init = function (){
   //If content can be edited, preload content in editor
   if ( router.isEditable() ) editor.loadContent(router.currentPost);
 
-
   //add event listeners to preview content changes, to toggle editor and to protect unsaved data
   editor.addListeners();
 
@@ -33,10 +32,10 @@ editor.init = function (){
 editor.addListeners = function (){
 
     //add event listeners on links to protect unsaved data
-    var links = document.getElementsByTagName('a');
-    for (let link of links) {
-        link.addEventListener( 'click' , editor.confirmLeave);
-    }
+    //var links = document.getElementsByTagName('a');
+    let links = document.querySelectorAll('a');
+    links.forEach(function(link) {link.addEventListener( 'click' , editor.confirmLeave)});
+
    //add event listener to toggle editor
    helpers.getEditorToggleAEl().removeEventListener('click', editor.confirmLeave);
    helpers.getEditorToggleAEl().addEventListener('click', editor.toggleEditor);
